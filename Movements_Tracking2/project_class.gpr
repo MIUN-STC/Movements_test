@@ -1,0 +1,40 @@
+with "../csc/SDLGL.gpr";
+
+project Project_Class is
+
+	for Languages use ("C");
+	for Object_Dir use "obj";
+	for Exec_Dir use "bin";
+	--for Root_Dir use "..";
+	
+	for Source_Dirs use SDLGL'Source_Dirs & 
+	(
+		"../csc/",
+		"src/project_class"
+	);
+	
+	Main_Files :=
+	(
+		"pp_3d.c"--,
+		--"classy_print.c"
+	);
+	
+	for Main use Main_Files;
+	
+	for Source_Files use Main_Files &
+	();
+	
+	package Builder is
+		--for Executable ("path3d_txy.c") use "path3d_txy.exe";
+	end Builder;
+
+	package Compiler is
+		for Switches ("C") use SDLGL.Compiler'Switches ("C") & ("-march=native");
+	end Compiler;
+
+	package Linker is
+		--for Switches ("C") use SDLGL.Linker'Linker_Options & ("-msse2", "-msse3", "-msse4", "-msse4.1");
+	end Linker;
+
+
+end Project_Class;

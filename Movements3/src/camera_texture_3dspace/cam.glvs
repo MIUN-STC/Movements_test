@@ -1,0 +1,20 @@
+#version 150 core
+uniform mat4 mvp;
+uniform float time;
+in vec4 in_Position;
+in vec4 in_Color;
+in vec2 in_Texcoord;
+out vec2 Texcoord;
+out vec4 vs_col;
+void main()
+{
+	Texcoord = in_Texcoord;
+	vec4 p = mvp * in_Position;
+	
+	//p.x = p.x + cos (time);
+	//p.x += cos (time*10.0f);
+	//p.y *= sin (time*0.538);
+	vs_col = in_Color;
+	gl_Position = p;
+}
+

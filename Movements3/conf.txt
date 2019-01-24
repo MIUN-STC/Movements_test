@@ -1,0 +1,25 @@
+#4K
+OffsetX 136
+OffsetY 424
+
+#HD 1080p
+#Width 1920
+#Height 1080
+
+#4K
+Width 3840
+Height 2160
+
+#Max resolution
+#Width 4112
+#Height 3008
+
+#TriggerMode On
+TriggerMode Off
+
+#transferTurboMode Off
+transferTurboMode Active
+
+AcquisitionFrameRate 5
+
+ExposureTime 20000

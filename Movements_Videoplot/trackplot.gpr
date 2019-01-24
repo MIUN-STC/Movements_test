@@ -1,0 +1,49 @@
+with "../csc/SDLGL.gpr";
+
+project TrackPlot is
+
+	for Languages use ("C++");
+	for Object_Dir use "obj";
+	for Exec_Dir use "bin";
+	for Source_Dirs use 
+	(
+		"../csc",
+		"src/trackplot"
+	);
+	
+	
+	Main_Files := 
+	(
+		"trackplot.cpp"
+	);
+	
+	for Main use Main_Files;
+	
+	for Source_Files use Main_Files &
+	();
+	
+	package Builder is 
+	end Builder;
+
+	package Compiler is
+		Flags := 
+		(
+			"-std=c++11"
+		);
+		for Default_Switches ("C++") use Flags;
+	end Compiler;
+
+	package Linker is
+		CV := 
+		(
+			"-lopencv_videoio",
+			"-lopencv_imgproc",
+			"-lopencv_core",
+			""
+		);
+		for Switches ("C++") use CV;
+	end Linker;
+
+end TrackPlot;
+
+

@@ -1,0 +1,20 @@
+#version 330 core
+
+layout (location = 0) in vec4 in_vpos;
+layout (location = 1) in vec4 in_vcol;
+layout (location = 2) in vec4 in_tpos;
+
+uniform vec4 transform;
+
+out vec3 tpos;
+out vec4 vcol;
+
+void main(void)
+{
+	vec2 p = in_vpos.xy;
+	p += transform.xy;
+	p *= transform.zw;
+	gl_Position = vec4 (p, 0.0, 1.0);
+	tpos = in_tpos.xyz;
+	vcol = in_vcol;
+}

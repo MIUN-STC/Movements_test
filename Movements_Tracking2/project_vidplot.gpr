@@ -1,0 +1,41 @@
+with "../csc/SDLGL.gpr";
+
+project Project_Vidplot is
+
+	for Languages use ("C++");
+	for Object_Dir use "obj";
+	for Exec_Dir use "bin";
+	--for Root_Dir use "..";
+	
+	for Source_Dirs use SDLGL'Source_Dirs & 
+	(
+		"../csc/",
+		"src/project_vidplot"
+	);
+	
+	Main_Files :=
+	(
+		"vidplot.cpp"
+	);
+	
+	for Main use Main_Files;
+	
+	for Source_Files use Main_Files &
+	();
+	
+	package Builder is
+		--for Executable ("template_3d.c") use "template_3d.exe";
+	end Builder;
+
+	package Compiler is
+		for Switches ("C++") use SDLGL.Compiler'Switches ("C++");
+	end Compiler;
+
+	package Linker is
+		--CV := ("-lopencv_core", "-lopencv_videoio");
+		CV := ("-lopencv_core", "-lopencv_videoio", "-lopencv_highgui");
+		for Switches ("C++") use SDLGL.Linker'Linker_Options & CV;
+	end Linker;
+
+
+end Project_Vidplot;

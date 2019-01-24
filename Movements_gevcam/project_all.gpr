@@ -1,0 +1,10 @@
+aggregate project Project_All is
+	for Project_Files use 
+	(
+		"project_camera_texture.gpr",
+		"project_capture.gpr",
+		"project_diagnostic.gpr",
+		"project_review_sdl.gpr",
+		"project_pulser.gpr"
+	);
+end Project_All;

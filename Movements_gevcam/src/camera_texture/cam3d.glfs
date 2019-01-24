@@ -1,0 +1,17 @@
+#version 150 core
+in vec4 vs_col;
+in vec2 Texcoord;
+out vec4 out_Color;
+uniform sampler2D tex;
+void main()
+{
+	vec4 c = texture(tex, Texcoord);
+	c = vec4 (c.a, c.a, c.a, 1.0);
+	
+	//c.r = 1.0 - c.r;
+	//c.g = 1.0 - c.g;
+	//c.b = 1.0 - c.b;
+	c.r += 0.01*vs_col.g;
+	out_Color = c;
+}
+

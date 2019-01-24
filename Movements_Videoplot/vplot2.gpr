@@ -1,0 +1,42 @@
+with "../csc/SDLGL.gpr";
+
+project VPlot2 is
+
+	for Languages use ("C");
+	for Object_Dir use "obj";
+	for Exec_Dir use "bin";
+	
+	for Source_Dirs use SDLGL'Source_Dirs & 
+	(
+		"../csc/",
+		"src/vplot2"
+	);
+	
+	Main_Files :=
+	(
+		"vplot2.c"
+		--"vplot2a.c"
+	);
+	
+	for Main use Main_Files;
+	
+	for Source_Files use Main_Files &
+	(
+	);
+	
+	package Builder is
+	end Builder;
+
+	package Compiler is
+		F := ("-Wno-error=deprecated-declarations");
+		for Switches ("C") use SDLGL.Compiler'Switches ("C") & F;
+	end Compiler;
+
+	package Linker is
+		AV := ("-lavformat", "-lavcodec", "-lavutil", "-lswscale", "-lavfilter");
+		FT := ("-lfreetype");
+		for Switches ("C") use SDLGL.Linker'Linker_Options & AV & FT;
+	end Linker;
+
+
+end VPlot2;

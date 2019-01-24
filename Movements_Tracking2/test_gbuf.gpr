@@ -1,0 +1,67 @@
+project Test_Gbuf is
+
+	for Languages use ("C");
+	for Object_Dir use "obj";
+	for Exec_Dir use "bin";
+	for Source_Dirs use 
+	(
+		"src", 
+		"src/common", 
+		"src/test_gbuf"
+	);
+	
+	
+	Main_Files := 
+	(
+		"test_gbuf.c",
+		"test_bufq.c",
+		"test_bufk.c"
+		--"test_gbuf_graphics.c"
+	);
+	
+	for Main use Main_Files;
+	
+	for Source_Files use Main_Files &
+	();
+	
+	package Builder is 
+	end Builder;
+
+	package Compiler is
+		for Switches ("C") use 
+		(
+			"-Wno-unused-function",
+			"-Wno-error=unused-function",
+			--"-Wno-missing-field-initializers",
+			--"-Wno-missing-braces", 
+			--"-Wno-error=unused-but-set-variable",
+			--"-Wno-error=unused-parameter",
+			--"-Wno-error=unused-variable",
+			--"-Wno-variadic-macros",
+			--"-std=gnu11", 
+			--"-fdiagnostics-color", 
+			"-Wall", 
+			--"-Wextra", 
+			--"-Wpedantic", 
+			--"-Wshadow", 
+			--"-Werror", 
+			--"-Wshadow", 
+			--"-march=native",
+			""
+		);
+	end Compiler;
+
+	package Linker is
+		SDL_Flags := 
+		(
+			--"-Wl,-rpath,/usr/local/lib", 
+			--"-Wl,--enable-new-dtags", 
+			"-lSDL2"
+			--"-lSDL2_image"
+		);
+		
+		for Switches ("test_gbuf_graphics.c") use SDL_Flags & ("-lGL", "-lm");
+	end Linker;
+
+end Test_Gbuf;
+

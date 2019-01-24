@@ -1,0 +1,17 @@
+#version 330 core
+
+layout (location = 0) in vec4 xyuv;
+
+uniform vec4 transform;
+
+out vec2 vs_uv;
+
+void main(void)
+{
+	vec2 p = xyuv.xy;
+	p += transform.xy;
+	p *= transform.zw;
+	
+	gl_Position = vec4 (p, 0.0, 1.0);
+	vs_uv = xyuv.wz;
+}

@@ -1,0 +1,56 @@
+project Manager is
+
+	for Languages use ("C");
+	for Object_Dir use "obj";
+	for Exec_Dir use "bin";
+	for Source_Dirs use 
+	(
+		"../csc",
+		"src"
+	);
+	
+	Main_Files :=
+	(
+		--"listfiles.c",
+		--"manager.c"
+		"test.c"
+	);
+	
+	for Main use Main_Files;
+	
+	for Source_Files use Main_Files &
+	();
+	
+	package Builder is
+	end Builder;
+
+	package Compiler is
+		for Switches ("C") use 
+		(
+			"-Wno-unused-function",
+			"-Wno-error=unused-function",
+			--"-Wno-missing-field-initializers",
+			--"-Wno-missing-braces", 
+			--"-Wno-error=unused-but-set-variable",
+			--"-Wno-error=unused-parameter",
+			--"-Wno-error=unused-variable",
+			--"-Wno-variadic-macros",
+			--"-std=gnu11", 
+			--"-fdiagnostics-color", 
+			"-Wall", 
+			--"-Wextra", 
+			--"-Wpedantic", 
+			--"-Wshadow", 
+			--"-Werror", 
+			--"-Wshadow", 
+			--"-march=native",
+			--"-DOPTIONAL_ASSERT_F=ASSERT_F",
+			""
+		);
+	end Compiler;
+
+	package Linker is
+	end Linker;
+
+
+end Manager;

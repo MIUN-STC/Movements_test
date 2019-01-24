@@ -1,0 +1,16 @@
+#version 150 core
+uniform float time;
+in vec2 in_Position;
+in vec2 in_Texcoord;
+out vec2 Texcoord;
+out vec4 vs_col;
+
+void main()
+{
+	Texcoord = in_Texcoord;
+	vec2 p = in_Position;
+	vec4 c = vec4 (1.0, 1.0, 1.0, 1.0);
+	c.r = cos (time);
+	gl_Position = vec4 (p.x, p.y, 0.0, 1.0);
+}
+

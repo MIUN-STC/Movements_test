@@ -1,0 +1,22 @@
+#version 330
+
+
+layout (location = 0) in vec2 position;
+
+uniform vec2 u_translate;
+uniform float u_scale;
+uniform float u_iterations;
+
+out vec2 f_coordinate;
+out float f_iterations;
+
+void main(void)
+{
+	gl_Position = vec4 (position, 0, 1);
+	f_iterations = u_iterations;
+	vec2 p = position;
+	vec2 t = u_translate;
+	float s = u_scale;
+	f_coordinate = p * s + t;
+}
+

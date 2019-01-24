@@ -1,0 +1,15 @@
+#version 330 core
+
+layout (location = 0) in vec4 pos;
+layout (location = 1) in vec2 uv;
+
+uniform mat4 mvp;
+out vec4 vs_color;
+out vec2 vs_uv;
+
+void main(void)
+{
+	gl_Position = mvp * pos;
+	vs_color = vec4 (1.0, 1.0, 1.0, 1.0);
+	vs_uv = uv;
+}

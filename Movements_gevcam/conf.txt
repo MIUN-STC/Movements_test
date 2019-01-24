@@ -1,0 +1,74 @@
+# ====== Video format settings ======
+# Offset need to be set after width and height.
+
+#4K
+#Width 3840
+#Height 2160
+#OffsetX 0
+#OffsetX 136
+#OffsetY 424
+
+
+#HD 1080p
+Width 1920
+Height 1080
+OffsetX 1080
+OffsetY 1504
+
+
+# F Changing
+#Width 4096
+#Height 600
+#OffsetX 0
+#OffsetY 2084
+
+
+#Max resolution
+#Width 4112
+#Height 3008
+
+
+
+
+# ===========================================
+
+TriggerMode Off
+#TriggerMode Off
+#transferTurboMode Off
+transferTurboMode Active
+AcquisitionFrameRate 4
+
+
+
+
+# ====== Exposure controll ======
+
+#ExposureTime 20000
+autoBrightnessMode Active
+ExposureAuto Continuous
+GainAuto Continuous
+#autoBrightnessSequence Exposure_Gain_Iris
+autoBrightnessSequence Gain_Exposure_Iris
+autoBrightnessTarget 110
+#gainAutoSource DigitalAll
+#gainAutoSource SensorAll
+exposureAutoMaxValue 20000
+exposureAutoMinValue 27
+Gain 1
+
+
+
+
+# ====== Enable output trigger of Line3 ======
+# TODO: Fix output trigger.
+# Output trigger does not send anything when using AcquistionFrameRate.
+
+#LineSelector Line3
+#outputLineSource PulseOnStartofFrame
+#outputLineSoftwareLatchControl Latch
+#LineInverter
+#outputLinePulseDelay
+#outputLinePulseDuration
+#outputLineValue
+#outputLineSoftwareCmd
+

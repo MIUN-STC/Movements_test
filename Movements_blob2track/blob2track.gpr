@@ -1,0 +1,80 @@
+with "../csc/SDLGL.gpr";
+
+project Blob2Track is
+
+	for Languages use ("C");
+	for Object_Dir use "obj";
+	for Exec_Dir use "bin";
+	
+	for Source_Dirs use 
+	(
+		"../csc/**",
+		"src"
+	);
+	
+	Main_Files :=
+	(
+		"blob2track.c"
+	);
+	
+	for Main use Main_Files;
+	
+	for Source_Files use Main_Files &
+	();
+	
+	package Builder is
+	end Builder;
+
+	package Compiler is
+	
+		--https://developers.redhat.com/blog/2018/03/21/compiler-and-linker-flags-gcc/
+		for Switches ("C") use 
+		(
+			"-std=gnu11", 
+			"-march=native",
+			"-fdiagnostics-color", 
+			
+			"-Wall", 
+			"-Werror",
+			"-Wextra", 
+			"-Wshadow",
+			"-Wpedantic",  
+			
+			"-Wduplicated-branches",
+			"-Wduplicated-cond",
+			"-Wlogical-op",
+			"-Wrestrict",
+			"-Wnull-dereference",
+			"-Wjump-misses-init",
+			"-Wdouble-promotion",
+			"-Wformat=2",
+			
+			"-Werror=format-security",
+			"-Werror=implicit-function-declaration",
+		
+			"-Wno-unused-function",
+			"-Wno-unused-parameter",
+			"-Wno-error=unused-function",
+			"-Wno-error=unused-but-set-variable",
+			"-Wno-error=unused-parameter",
+			"-Wno-error=unused-variable",
+			
+			--"-Wno-missing-braces",
+			--"-Wno-missing-field-initializers",
+			--"-Wno-variadic-macros",
+			
+			
+			"-D_FORTIFY_SOURCE=2",
+			
+			"-Wl,-z,defs",
+			"-pipe",
+			
+			""
+		);
+	end Compiler;
+
+	package Linker is
+	end Linker;
+
+
+end Blob2Track;
